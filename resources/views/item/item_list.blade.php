@@ -12,11 +12,11 @@
       @foreach($items as $item)
       <div class="col-md-4 mb-2">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header"><a href="/item/{{ $item->id }}">
             {{ $item->item_name }}
-          </div>
+          </a></div>
           <div class="card-body">
-            <img src="{{ asset('img/'.$item->image) }}" class="img-fluid rounded" alt="{{ $item->name }}"> 
+            <img src="{{ asset('img/'.$item->image) }}" class="img-fluid rounded" alt="{{ $item->item_name }}"> 
           </div>
           <div class="card-body">
             ¥ {{ $item->price }}
