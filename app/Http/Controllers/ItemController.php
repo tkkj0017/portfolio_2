@@ -12,12 +12,28 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function itemList()
+    public function itemList(Request $request)
     {
-        $items = Item::all();
+        if($request->has('search_word')){
+            $items = Item::where('item_name', 'like', '%'.$request->get('search_word').'%')->paginate(9);
+        }
+        else{
+            $items = Item::paginate(9);
+        }
         return view('item/item_list', ['items'=>$items]);
     }
-
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Item  $item
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Item $item)
+    {
+        return view('item/show', ['item' => $item]);
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -39,16 +55,6 @@ class ItemController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Item  $item
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Item $item)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
