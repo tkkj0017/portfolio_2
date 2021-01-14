@@ -11,9 +11,13 @@
 |
 */
 
-Route::get('/', 'ItemController@itemList');
+Route::get('/', 'ItemController@index');
+
+Route::post('/item/cartitem', 'CartItemController@store');
 
 Route::get('/item/{item}', 'ItemController@show');
+
+Route::get('/cartitem', 'CartItemController@index');
 
 Auth::routes();
 

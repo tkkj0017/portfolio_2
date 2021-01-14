@@ -12,7 +12,7 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function itemList(Request $request)
+    public function index(Request $request)
     {
         if($request->has('search_word')){
             $items = Item::where('item_name', 'like', '%'.$request->get('search_word').'%')->paginate(9);
@@ -33,7 +33,7 @@ class ItemController extends Controller
     {
         return view('item/show', ['item' => $item]);
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *

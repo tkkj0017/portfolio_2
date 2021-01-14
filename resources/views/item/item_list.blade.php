@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+  @if(Session::has('flash_message'))
+  <div class="alert alert-success">
+      {{ session('flash_message') }}
+  </div>
+  @endif
   <div class="container mb-4">
     <form method="GET" action="/">
         <input type="text" name="search_word">
