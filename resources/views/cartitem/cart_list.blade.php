@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+  @if(Session::has('flash_message'))
+    <div class="alert alert-success">
+      {{ session('flash_message') }}
+    </div>
+  @endif
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
@@ -13,8 +18,20 @@
               <div>
                 ¥ {{ $cartitem->price }}
               </div>
-              <div>
-                {{ $cartitem->quantity }}個
+              <div class="form-inline">
+                {{-- 数量を更新 --}}
+                <form method="POST" action="/cartitem/{{ $cartitem->id }}">
+                  @method('PUT')
+                  @csrf
+                  <input type="text" class="form-control" name="quantity" value="{{ $cartitem->quantity }}">
+                  <button type="submit" class="btn btn-outline-dark btn-sm">更新</button>
+                </form>
+                {{-- 削除フォーム --}}
+                <form method="POST" action="/cartitem/{{ $cartitem->id }}">
+                  @method('DELETE')
+                  @csrf
+                  <button type="submit" class="btn btn-outline-dark btn-sm">削除</button>
+                </form>
               </div>
             </div>
           @endforeach

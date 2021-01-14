@@ -88,7 +88,9 @@ class CartItemController extends Controller
      */
     public function update(Request $request, CartItem $cartItem)
     {
-        //
+        $cartItem->quantity = $request->post('quantity');
+        $cartItem->save();
+        return redirect('cartitem')->with('flash_message','カートを更新しました');
     }
 
     /**
@@ -99,6 +101,7 @@ class CartItemController extends Controller
      */
     public function destroy(CartItem $cartItem)
     {
-        //
+        $cartItem->delete();
+        return redirect('cartitem')->with('flash_message', 'カートから削除しました');
     }
 }
