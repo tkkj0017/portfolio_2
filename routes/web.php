@@ -14,15 +14,17 @@
 Route::get('/', 'ItemController@index');
 
 Route::post('/item/cartitem', 'CartItemController@store');
-
 Route::get('/item/{item}', 'ItemController@show');
 
+
 Route::get('/cartitem', 'CartItemController@index');
+Route::delete('/cartitem/{cartItem}', 'CartItemController@destroy');
+Route::put('/cartitem/{cartItem}', 'CartItemController@update');
+
+Route::get('/order', 'OrderController@index');
+Route::post('/order', 'OrderController@store');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::delete('/cartitem/{cartItem}', 'CartItemController@destroy');
-
-Route::put('/cartitem/{cartItem}', 'CartItemController@update');
 
 Auth::routes();

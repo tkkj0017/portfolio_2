@@ -43,10 +43,17 @@
             小計
           </div>
           <div class="card-body">
-            ¥ {{ $subtotal }}
+            <div>
+              ¥ {{ $subtotal }}
+            </div>
+            <div>
+              <a class="btn btn-outline-dark btn-sm" href="/order" role="button">
+                レジに進む
+              </a>
+            </div>
           </div>
         </div>
-      </div>
+      </div>   
     </div>
   </div>
 @endsection
