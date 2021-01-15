@@ -6,6 +6,7 @@ use App\Order;
 use App\CartItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -46,6 +47,9 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         if($request->has('post')){
+            // メールを送信する
+            Mail::to(Auth::user()->email)->send(new \App\Mail\Order());
+
             // カートのデータを削除
             CartItem::where('user_id', Auth::id())->delete();
 
