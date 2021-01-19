@@ -12,6 +12,7 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index(Request $request)
     {
         if($request->has('search_word')){
