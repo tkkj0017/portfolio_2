@@ -12,7 +12,7 @@
 */
 
 // トップページ(ニュース一覧表示)
-// Route::get('/', 'ItemController@index');
+Route::get('/', 'NewsController@index');
 
 // アイテム一覧取得
 Route::get('/item', 'ItemController@index');
@@ -34,7 +34,11 @@ Route::get('/order', 'OrderController@index');
 Route::post('/order', 'OrderController@store');
 
 // お問い合わせ画面
-// Route::get('/contact', 'OrderController@index');
+// index
+Route::get('contact/index', 'ContactController@index')->name('contact.index');
+// create
+Route::get('contact/create', 'ContactController@create')->name('contact.create');
+Route::post('contact/store', 'ContactController@store')->name('contact.store');
 
 // お問い合わせ送信
 // Route::post('/contact', 'OrderController@store');

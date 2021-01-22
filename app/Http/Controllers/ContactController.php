@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Order;
-use App\CartItem;
+use App\Contact;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
-class OrderController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,15 +16,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $cartitems = CartItem::select('cart_items.*', 'items.item_name', 'items.price')
-        ->where('user_id', Auth::id())
-        ->join('items', 'items.id', '=', 'cart_items.item_id')
+        // クエリビルダ
+        $contacts = DB::table('contacts')
+        ->select('id', 'name', 'email', 'title', 'body', 'created_at')
         ->get();
-        $subtotal = 0;
-        foreach($cartitems as $cartitem){
-            $subtotal += $cartitem->price * $cartitem->quantity;
-        }
-        return view('order/order_confirm', ['cartitems' => $cartitems, 'subtotal' => $subtotal]);
+        return view('contact.index', compact('contacts'));
     }
 
     /**
@@ -35,7 +30,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('contact.create');
     }
 
     /**
@@ -46,18 +41,20 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->has('post')){
-            // メールを送信する
-            Mail::to(Auth::user()->email)->send(new \App\Mail\Order());
+        // Contactモデルのインスタンス化
+        $contact = new Contact;
 
-            // オーダーテーブルへのデータ挿入
+        $contact->name = $request->input('name');
+        $contact->email = $request->input('email');
+        $contact->title = $request->input('title');
+        $contact->body = $request->input('body');
 
-            // カートのデータを削除
-            CartItem::where('user_id', Auth::id())->delete();
+        $contact->save();
 
-            // viewをreturn
-            return view('order/order_complete');
-        }
+        // メールを送信
+        Mail::to($contact->email)->send(new \App\Mail\Contact());
+
+        return redirect('/contact/create');
         $request->flash();
         return $this->index();
     }
@@ -65,10 +62,10 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Order  $order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($id)
     {
         //
     }
@@ -76,10 +73,10 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Order  $order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit($id)
     {
         //
     }
@@ -88,10 +85,10 @@ class OrderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Order  $order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -99,10 +96,10 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Order  $order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy($id)
     {
         //
     }

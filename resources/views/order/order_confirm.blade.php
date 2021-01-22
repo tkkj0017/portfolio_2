@@ -11,6 +11,13 @@
           <div class="card-body">
               <form method="POST" action="/order">
                   @csrf
+                  <div class="form-row mb-4">
+                    <div class="col-md-6">
+                        @if(!Request::has('confirm'))
+                            <button type="submit" class="btn btn-outline-dark btn-sm" name="get_user_profile">自分の登録情報を入力</button>
+                        @endif
+                    </div>
+                  </div>
                   <div class="form-row">
                       <div class="form-group col-md-6">
                           <label for="name">氏名</label>
@@ -24,7 +31,7 @@
                   </div>
 
                   <div class="form-row">
-                      <div class="form-group col-md-2">
+                      <div class="form-group col-md-6">
                           <label for="postalcode">郵便番号</label>
                           @if(Request::has('confirm'))
                               <p class="form-control-static">{{ old('postalcode') }}</p>
@@ -33,7 +40,9 @@
                               <input id="postalcode" type="text" class="form-control" name="postalcode" value="{{ old('postalcode') }}">
                           @endif
                       </div>
-                      <div class="form-group col-md-4">
+                  </div>
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
                           <label for="region">都道府県</label>
                           @if(Request::has('confirm'))
                               <p class="form-control-static">{{ old('region') }}</p>
@@ -104,17 +113,17 @@
   <div class="col-md-8">
       <div class="card">
           @foreach ($cartitems as $cartitem)
-              <div class="card-header">
-                  {{ $cartitem->item_name }}
-              </div>
-              <div class="card-body">
-                  <div>
-                      {{ $cartitem->price }}円
-                  </div>
-                  <div>
-                      {{ $cartitem->quantity }}個
-                  </div>
-              </div>
+            <div class="card-header">
+                {{ $cartitem->item_name }}
+            </div>
+            <div class="card-body">
+                <div>
+                    {{ $cartitem->price }}円
+                </div>
+                <div>
+                    {{ $cartitem->quantity }}個
+                </div>
+            </div>
           @endforeach
         </div>
       </div>
