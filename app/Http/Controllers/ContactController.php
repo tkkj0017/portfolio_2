@@ -54,9 +54,7 @@ class ContactController extends Controller
         // メールを送信
         Mail::to($contact->email)->send(new \App\Mail\Contact());
 
-        return redirect('/contact/create');
-        $request->flash();
-        return $this->index();
+        return redirect('/contact/create', ['title' => $contact->title, 'body' => $contact->body]);
     }
 
     /**
