@@ -15,8 +15,8 @@
 Route::get('/', 'NewsController@index');
 
 
-// アイテム一覧取得
-Route::get('/item', 'ItemController@index');
+// アイテム一覧取得  
+Route::get('/item_list', 'ItemController@index');
 // アイテム詳細取得
 Route::get('/item/{item}', 'ItemController@show');
 

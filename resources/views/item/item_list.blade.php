@@ -7,7 +7,7 @@
   </div>
   @endif
   <div class="container mb-4">
-    <form method="GET" action="/item">
+    <form method="GET" action="/item_list">
         <input type="text" name="search_word">
         <input type="submit" class="btn btn-outline-dark btn-sm" value="商品検索">
     </form>

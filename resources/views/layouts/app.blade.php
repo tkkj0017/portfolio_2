@@ -44,7 +44,7 @@
                 <ul class="navbar-nav">
                     <!-- Authentication Links -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/item') }}">Goods</a>
+                        <a class="nav-link" href="{{ url('/item_list') }}">Goods</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="{{ route('contact.create') }}">Contact</a>

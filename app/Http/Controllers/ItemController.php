@@ -21,7 +21,7 @@ class ItemController extends Controller
         else{
             $items = Item::paginate(9);
         }
-        return view('item.item_list', ['items'=>$items]);
+        return view('item/item_list', ['items'=>$items]);
     }
     
     /**
