@@ -14,15 +14,16 @@
 // トップページ(ニュース一覧表示)
 Route::get('/', 'NewsController@index');
 
+
 // アイテム一覧取得
 Route::get('/item', 'ItemController@index');
 // アイテム詳細取得
 Route::get('/item/{item}', 'ItemController@show');
 
-// カートへ追加
-Route::post('/item/cartitem', 'CartItemController@store');
 // カートの中身取得
 Route::get('/cartitem', 'CartItemController@index');
+// カートへ追加
+Route::post('/item/cartitem', 'CartItemController@store');
 // カートのアイテム削除
 Route::delete('/cartitem/{cartItem}', 'CartItemController@destroy');
 // カートのアイテムの数量変更
