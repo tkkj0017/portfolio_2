@@ -41,6 +41,8 @@
                           @endif
                       </div>
                   </div>
+
+                  {{-- 削除予定 --}}
                   <div class="form-row">
                       <div class="form-group col-md-6">
                           <label for="region">都道府県</label>

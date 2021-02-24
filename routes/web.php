@@ -21,18 +21,18 @@ Route::get('/item_list', 'ItemController@index');
 Route::get('/item/{item}', 'ItemController@show');
 
 // カートの中身取得
-Route::get('/cartitem', 'CartItemController@index');
+Route::get('cartitem', 'CartItemController@index');
 // カートへ追加
-Route::post('/item/cartitem', 'CartItemController@store');
+Route::post('item/cartitem', 'CartItemController@store');
 // カートのアイテム削除
-Route::delete('/cartitem/{cartItem}', 'CartItemController@destroy');
+Route::delete('cartitem/{cartItem}', 'CartItemController@destroy');
 // カートのアイテムの数量変更
-Route::put('/cartitem/{cartItem}', 'CartItemController@update');
+Route::put('cartitem/{cartItem}', 'CartItemController@update');
 
 // 購入リスト取得
-Route::get('/order', 'OrderController@index');
+Route::get('order', 'OrderController@index');
 // 購入する
-Route::post('/order', 'OrderController@store');
+Route::post('order', 'OrderController@store');
 
 // お問い合わせ画面
 // index
@@ -46,7 +46,7 @@ Route::post('contact/store', 'ContactController@store')->name('contact.store');
 
 
 // ホーム画面(マイページ)
-Route::get('/home', 'HomeController@index');
+Route::get('home', 'HomeController@index');
 
 // 認証に必要なルーティングを定義
 Auth::routes();
