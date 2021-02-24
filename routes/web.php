@@ -39,10 +39,10 @@ Route::post('order', 'OrderController@store');
 Route::get('contact/index', 'ContactController@index')->name('contact.index');
 // create
 Route::get('contact/create', 'ContactController@create')->name('contact.create');
-Route::post('contact/store', 'ContactController@store')->name('contact.store');
 
 // お問い合わせ送信
-// Route::post('/contact', 'OrderController@store');
+Route::post('contact/store', 'ContactController@store')->name('contact.store');
+
 
 
 // ホーム画面(マイページ)
