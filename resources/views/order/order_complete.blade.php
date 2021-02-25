@@ -8,7 +8,7 @@
                     <div class="card-body">
                         購入完了しました！
                     </div>
-                    <button type="submit" class="btn btn-default" name="back">商品一覧へ移動</button>
+                    <button type="submit" class="btn btn-default" name="back">商品一覧へ</button>
                 </div>
             </div>
         </div>
