@@ -42,23 +42,6 @@
                       </div>
                   </div>
 
-                  {{-- 削除予定 --}}
-                  <div class="form-row">
-                      <div class="form-group col-md-6">
-                          <label for="region">都道府県</label>
-                          @if(Request::has('confirm'))
-                              <p class="form-control-static">{{ old('region') }}</p>
-                              <input id="region" type="hidden" name="region" value="{{ old('region') }}">
-                          @else
-                              <select id="region" class="form-control" name="region">
-                                  @foreach(Config::get('region') as $value)
-                                      <option @if(old('region') == $value) selected @endif>{{ $value }}</option>
-                                  @endforeach
-                              </select>
-                          @endif
-                      </div>
-                  </div>
-
                   <div class="form-row mb-1">
                       <div class="form-group col-md-6">
                           <label for="addressline1">住所1</label>
