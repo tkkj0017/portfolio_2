@@ -44,7 +44,7 @@
                 <ul class="navbar-nav">
                     <!-- Authentication Links -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/item_list') }}">Goods</a>
+                        <a class="nav-link" href="{{ url('item_list') }}">Goods</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="{{ route('contact.create') }}">Contact</a>
@@ -60,7 +60,7 @@
                         @endif
                     @else
                         <li class="nav-item">
-                            <a href="/cartitem" class="nav-link">
+                            <a href="cartitem" class="nav-link">
                                 <i class="fas fa-shopping-cart"></i>
                             </a>
                         </li>
@@ -71,9 +71,7 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 {{-- マイページ --}}
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
+                            <a class="dropdown-item" href="{{  url('home') }}">
                                     {{ __('マイページ') }}
                                 </a>
                                 {{-- ログアウト --}}
