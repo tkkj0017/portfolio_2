@@ -14,7 +14,7 @@
   - MAMP(→Docker???) 
     - MySQL 5.7.26
     - Apache
-  - AWS(EC2, RDS, Route53, VPC, IAM)
+  - AWS(EC2, RDS, Route53, VPC, IAM, S3)
 
 
 ## 機能一覧
